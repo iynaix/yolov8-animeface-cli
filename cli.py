@@ -6,6 +6,8 @@ from ultralytics import YOLO
 
 def results_to_json(results):
     ret = defaultdict(list)
+    ret[results.path] = []
+
     for img in results:
         for box in img.boxes.xyxy:
             box = box.round()
