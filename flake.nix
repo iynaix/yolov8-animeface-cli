@@ -36,9 +36,10 @@
             };
           };
 
-          packages = {
+          packages = rec {
             default = pkgs.callPackage ./package.nix { inherit anime-face-model; };
             inherit anime-face-model;
+            anime-face-detector = default;
           };
         };
     };

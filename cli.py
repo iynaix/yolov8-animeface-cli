@@ -33,7 +33,7 @@ def parse_args():
     parser.add_argument(
         "--save",
         action="store_true",
-        help="Output images with detection boxes",
+        help="Output images with detection boxes to ./runs",
     )
     parser.add_argument(
         "--stream",

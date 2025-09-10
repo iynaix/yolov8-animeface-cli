@@ -10,6 +10,15 @@ Add the following input to your `flake.nix`
   inputs.yolov8-animeface-cli.url = "github:iynaix/yolov8-animeface-cli";
 }
 ```
+A [yolov8-animeface-cli cachix](https://yolov8-animeface-cli.cachix.org) is also available, providing prebuilt binaries. To use it, add the following to your configuration:
+```nix
+{
+  nix.settings = {
+    substituters = ["https://yolov8-animeface-cli.cachix.org"];
+    trusted-public-keys = ["yolov8-animeface-cli.cachix.org-1:8Pfz5N6lVE9XevQD7P22cVpDoW8E3pdFNZkmHJyTPJY=
+  };
+}
+```
 
 Then, include it in your `environment.systemPackages` or `home.packages` by referencing the input:
 
@@ -41,7 +50,7 @@ options:
                         Confidence threshold for detection (e.g., 0.3).
   --iou IOU             Intersection over Union threshold for Non-Maximum
                         Suppression (e.g., 0.5).
-  --save                Output images with detection boxes
+  --save                Output images with detection boxes to ./runs
   --stream              Enable streaming prediction.
 ```
 
