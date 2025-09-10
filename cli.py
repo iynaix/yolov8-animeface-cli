@@ -1,20 +1,22 @@
 import argparse
 import json
 import os
+from collections import defaultdict
 from ultralytics import YOLO
 
 def results_to_json(results):
-    for result in results:
-        for box in result.boxes.xyxy:
+    ret = defaultdict(list)
+    for img in results:
+        for box in img.boxes.xyxy:
             box = box.round()
 
-            yield {
-                # "path": result.path,
+            ret[img.path].append({
                 "xmin": int(box[0]),
                 "ymin": int(box[1]),
                 "xmax": int(box[2]),
                 "ymax": int(box[3]),
-            }
+            })
+    return ret
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Anime face detection CLI.")
@@ -65,7 +67,7 @@ def main():
             stream=True,
             save=args.save,
         ):
-            print(json.dumps(list(results_to_json(img))))
+            print(json.dumps(results_to_json(img)))
 
 if __name__ == "__main__":
     main()

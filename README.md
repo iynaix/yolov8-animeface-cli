@@ -56,9 +56,9 @@ options:
 
 ### Sample Output
 ```console
-$ anime-face-detector ~/Pictures/Wallpapers/image1.png ~/Pictures/Wallpapers/image2.png
-[{"xmin":3213,"ymin":1197,"xmax":4567,"ymax":2576}]
-[{"xmin":1372,"ymin":418,"xmax":1801,"ymax":837}]
+$ anime-face-detector --stream ~/Pictures/Wallpapers/image1.png ~/Pictures/Wallpapers/image2.png
+{"/home/user/Pictures/Wallpapers/image1.png": [{"xmin":3213,"ymin":1197,"xmax":4567,"ymax":2576}]}
+{"/home/user/Pictures/Wallpapers/image2.png": [{"xmin":1372,"ymin":418,"xmax":1801,"ymax":837}]}
 ```
 
 ## Hacking
