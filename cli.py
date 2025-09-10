@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 from ultralytics import YOLO
 
@@ -64,7 +65,7 @@ def main():
             stream=True,
             save=args.save,
         ):
-            print(list(results_to_json(img)))
+            print(json.dumps(list(results_to_json(img))))
 
 if __name__ == "__main__":
     main()
