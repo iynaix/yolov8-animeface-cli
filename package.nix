@@ -16,6 +16,10 @@ python3Packages.buildPythonApplication {
   postPatch = ''
     substituteInPlace cli.py \
       --replace 'os.environ.get("MODEL_PATH")' '"${anime-face-model}"'
+  ''
+  + lib.optionalString (cudaSupport || rocmSupport) ''
+    substituteInPlace cli.py \
+      --replace 'device = "cpu"' 'device = "cuda:0"'
   '';
 
   buildSystem = with python3Packages; [

@@ -57,6 +57,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    device = "cpu";
 
     yolov8_animeface = YOLO(os.environ.get("MODEL_PATH"))
     for path in args.paths:
@@ -64,6 +65,7 @@ def main():
             path,
             conf=args.confidence,
             iou=args.iou,
+            device=device,
             # don't output progress as it is meant to be consumed by another script
             verbose=False,
             stream=True,
