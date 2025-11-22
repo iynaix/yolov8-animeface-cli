@@ -40,6 +40,8 @@
             default = pkgs.callPackage ./package.nix { inherit anime-face-model; };
             inherit anime-face-model;
             anime-face-detector = default;
+            anime-face-detector-cuda = default.override { cudaSupport = true; };
+            anime-face-detector-rocm = default.override { rocmSupport = true; };
           };
         };
     };
